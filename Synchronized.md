@@ -14,7 +14,7 @@ categories:
 
 ### procedure
 
-![javalock](/Users/liuhongxuan/notes/picture/javalock.png)
+![javalock](picture/javalock.png)
 
 ### bytecodeInterpreter
 

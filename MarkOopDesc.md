@@ -63,4 +63,4 @@ categories:
 > //                                               not valid at any other time
 > ```
 >
-> ![markoop](/Users/liuhongxuan/notes/picture/markoop.png)
+> ![markoop](picture/markoop.png)
