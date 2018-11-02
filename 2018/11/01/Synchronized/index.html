@@ -1,84 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cmn-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://lhxchifan.github.io/2018/11/01/Synchronized/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://lhxchifan.github.io/Users/liuhongxuan/notes/source/_posts/javalock.png">
-<meta property="og:updated_time" content="2018-11-02T07:00:38.274Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
-<meta name="twitter:image" content="http://lhxchifan.github.io/Users/liuhongxuan/notes/source/_posts/javalock.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>风间</title>
   
   
-    <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-</html>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>风间</div>
         
-          <a class="main-nav-link" href="/">Home</a>
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
         
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lhxchifan.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Synchronized" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/01/Synchronized/" class="article-date">
-  <time datetime="2018-11-01T03:36:07.283Z" itemprop="datePublished">2018-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><h3 id="procedure"><a href="#procedure" class="headerlink" title="procedure"></a>procedure</h3><p><img src="/Users/liuhongxuan/notes/source/_posts/javalock.png" alt="javalock"></p>
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1></h1>
+    </header>
+
+    <section>
+      <h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><h3 id="procedure"><a href="#procedure" class="headerlink" title="procedure"></a>procedure</h3><p><img src="/Users/liuhongxuan/notes/source/_posts/javalock.png" alt="javalock"></p>
 <h3 id="bytecodeInterpreter"><a href="#bytecodeInterpreter" class="headerlink" title="bytecodeInterpreter"></a>bytecodeInterpreter</h3><blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&gt; </span><br><span class="line">&gt; CASE(_monitorenter): &#123;</span><br><span class="line">&gt;         oop lockee = STACK_OBJECT(<span class="number">-1</span>);</span><br><span class="line">&gt;         <span class="comment">// derefing's lockee ought to provoke implicit null check</span></span><br><span class="line">&gt;         CHECK_NULL(lockee);</span><br><span class="line">&gt;         <span class="comment">// find a free monitor or one already allocated for this object</span></span><br><span class="line">&gt;         <span class="comment">// if we find a matching object then we need a new monitor</span></span><br><span class="line">&gt;         <span class="comment">// since this is recursive enter</span></span><br><span class="line">&gt;         BasicObjectLock* limit = istate-&gt;monitor_base();</span><br><span class="line">&gt;         BasicObjectLock* most_recent = (BasicObjectLock*) istate-&gt;stack_base();</span><br><span class="line">&gt;         BasicObjectLock* entry = <span class="literal">NULL</span>;</span><br><span class="line">&gt;         <span class="keyword">while</span> (most_recent != limit ) &#123;</span><br><span class="line">&gt;           <span class="keyword">if</span> (most_recent-&gt;obj() == <span class="literal">NULL</span>) entry = most_recent;</span><br><span class="line">&gt;           <span class="keyword">else</span> <span class="keyword">if</span> (most_recent-&gt;obj() == lockee) <span class="keyword">break</span>;</span><br><span class="line">&gt;           most_recent++;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;         <span class="keyword">if</span> (entry != <span class="literal">NULL</span>) &#123;</span><br><span class="line">&gt;           entry-&gt;set_obj(lockee);</span><br><span class="line">&gt;           markOop displaced = lockee-&gt;mark()-&gt;set_unlocked();</span><br><span class="line">&gt;           entry-&gt;lock()-&gt;set_displaced_header(displaced);</span><br><span class="line">&gt;           <span class="keyword">if</span> (Atomic::cmpxchg_ptr(entry, lockee-&gt;mark_addr(), displaced) != displaced) &#123;</span><br><span class="line">&gt;             <span class="comment">// Is it simple recursive case?</span></span><br><span class="line">&gt;             <span class="keyword">if</span> (THREAD-&gt;is_lock_owned((address) displaced-&gt;clear_lock_bits())) &#123;</span><br><span class="line">&gt;               entry-&gt;lock()-&gt;set_displaced_header(<span class="literal">NULL</span>);</span><br><span class="line">&gt;             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">&gt;               CALL_VM(InterpreterRuntime::monitorenter(THREAD, entry), handle_exception);</span><br><span class="line">&gt;             &#125;</span><br><span class="line">&gt;           &#125;</span><br><span class="line">&gt;           UPDATE_PC_AND_TOS_AND_CONTINUE(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">&gt;         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">&gt;           istate-&gt;set_msg(more_monitors);</span><br><span class="line">&gt;           UPDATE_PC_AND_RETURN(<span class="number">0</span>); <span class="comment">// Re-execute</span></span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;       &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -186,107 +157,47 @@
 </ol>
 </blockquote>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lhxchifan.github.io/2018/11/01/Synchronized/" data-id="cjnzo6p94000259cwzojy22y7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/11/01/MarkOopDesc/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
-  
-  
-</nav>
 
-  
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-11-01T03:36:07.283Z" itemprop="datePublished">
+              2018-11-01
+            </time>
+          </div>
+          
+      </section>
+    
+    
 </article>
 
-</section>
-        
-          <aside id="sidebar">
   
-    
+</div>
 
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+            <footer>
+    <div>© 2018 - fengjian </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/11/01/MarkOopDesc/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/01/Synchronized/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 fengjian<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
+
+        </div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
+</script>
 </body>
 </html>
