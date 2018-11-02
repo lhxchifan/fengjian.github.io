@@ -7,13 +7,19 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://lhxchifan.github.io/index.html">
+<meta property="og:url" content="http://lhxchifan.github.io/2018/11/01/Synchronized/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://lhxchifan.github.io/Users/liuhongxuan/notes/source/_posts/javalock.png">
+<meta property="og:updated_time" content="2018-11-02T07:00:38.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Synchronizedprocedure bytecodeInterpreter 1234567891011121314151617181920212223242526272829303132333435&amp;gt; &amp;gt; CASE(_monitorenter): &amp;#123;&amp;gt;         oop lockee = STACK_OBJECT(-1);&amp;gt;         // d">
+<meta name="twitter:image" content="http://lhxchifan.github.io/Users/liuhongxuan/notes/source/_posts/javalock.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,50 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-MarkOopDesc" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/01/MarkOopDesc/" class="article-date">
-  <time datetime="2018-11-01T03:44:45.458Z" itemprop="datePublished">2018-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="MarkOopDesc"><a href="#MarkOopDesc" class="headerlink" title="MarkOopDesc"></a>MarkOopDesc</h2><h3 id="怪异的用法"><a href="#怪异的用法" class="headerlink" title="怪异的用法"></a>怪异的用法</h3><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">markOopDesc</span>:</span> <span class="keyword">public</span> oopDesc &#123;</span><br><span class="line">&gt;  <span class="keyword">private</span>:</span><br><span class="line">&gt;   <span class="comment">// Conversion</span></span><br><span class="line">&gt;   <span class="keyword">uintptr_t</span> value() <span class="keyword">const</span> &#123; <span class="keyword">return</span> (<span class="keyword">uintptr_t</span>) <span class="keyword">this</span>; &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p><code>markOop</code> 实际上是用它的指针来存实际的bitfields，非常怪异</p>
-</blockquote>
-<h3 id="协议定义"><a href="#协议定义" class="headerlink" title="协议定义"></a>协议定义</h3><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// Bit-format of an object header (most significant first, big endian layout below):</span></span><br><span class="line">&gt; <span class="comment">//</span></span><br><span class="line">&gt; <span class="comment">//  32 bits:</span></span><br><span class="line">&gt; <span class="comment">//  --------</span></span><br><span class="line">&gt; <span class="comment">//             hash:25 ------------&gt;| age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line">&gt; <span class="comment">//             JavaThread*:23 epoch:2 age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line">&gt; <span class="comment">//             size:32 ------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line">&gt; <span class="comment">//             PromotedObject*:29 ----------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line">&gt; <span class="comment">//</span></span><br><span class="line">&gt; <span class="comment">//  64 bits:</span></span><br><span class="line">&gt; <span class="comment">//  --------</span></span><br><span class="line">&gt; <span class="comment">//  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line">&gt; <span class="comment">//  JavaThread*:54 epoch:2 unused:1   age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line">&gt; <span class="comment">//  PromotedObject*:61 ---------------------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line">&gt; <span class="comment">//  size:64 -----------------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line">&gt; <span class="comment">//</span></span><br><span class="line">&gt; <span class="comment">//  unused:25 hash:31 --&gt;| cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; normal object)</span></span><br><span class="line">&gt; <span class="comment">//  JavaThread*:54 epoch:2 cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; biased object)</span></span><br><span class="line">&gt; <span class="comment">//  narrowOop:32 unused:24 cms_free:1 unused:4 promo_bits:3 -----&gt;| (COOPs &amp;&amp; CMS promoted object)</span></span><br><span class="line">&gt; <span class="comment">//  unused:21 size:35 --&gt;| cms_free:1 unused:7 ------------------&gt;| (COOPs &amp;&amp; CMS free block)</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">//    [JavaThread* | epoch | age | 1 | 01]       lock is biased toward given thread</span></span><br><span class="line">&gt; <span class="comment">//    [0           | epoch | age | 1 | 01]       lock is anonymously biased</span></span><br><span class="line">&gt; <span class="comment">//</span></span><br><span class="line">&gt; <span class="comment">//  - the two lock bits are used to describe three states: locked/unlocked and monitor.</span></span><br><span class="line">&gt; <span class="comment">//</span></span><br><span class="line">&gt; <span class="comment">//    [ptr             | 00]  locked             ptr points to real header on stack</span></span><br><span class="line">&gt; <span class="comment">//    [header      | 0 | 01]  unlocked           regular object header</span></span><br><span class="line">&gt; <span class="comment">//    [ptr             | 10]  monitor            inflated lock (header is wapped out)</span></span><br><span class="line">&gt; <span class="comment">//    [ptr             | 11]  marked             used by markSweep to mark an object</span></span><br><span class="line">&gt; <span class="comment">//                                               not valid at any other time</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p><img src="/Users/liuhongxuan/notes/source/_posts/markoop.png" alt="markoop"></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lhxchifan.github.io/2018/11/01/MarkOopDesc/" data-id="cjnzo6p8z000059cw7zdwo9sx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Synchronized" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-Synchronized" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/01/Synchronized/" class="article-date">
   <time datetime="2018-11-01T03:36:07.283Z" itemprop="datePublished">2018-11-01</time>
@@ -232,11 +195,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/01/MarkOopDesc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
