@@ -49,7 +49,17 @@
     </header>
 
     <section>
-      <h1 id="MarkOopDesc"><a href="#MarkOopDesc" class="headerlink" title="MarkOopDesc"></a>MarkOopDesc</h1><h3 id="怪异的用法"><a href="#怪异的用法" class="headerlink" title="怪异的用法"></a>怪异的用法</h3><blockquote>
+      <h1 id="MarkOopDesc"><a href="#MarkOopDesc" class="headerlink" title="MarkOopDesc"></a>MarkOopDesc</h1><hr>
+<p>tags:</p>
+<ul>
+<li>java</li>
+<li>hotspot jvm</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>hotspot jvm</li>
+</ul>
+<h3 id="怪异的用法"><a href="#怪异的用法" class="headerlink" title="怪异的用法"></a>怪异的用法</h3><blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">markOopDesc</span>:</span> <span class="keyword">public</span> oopDesc &#123;</span><br><span class="line">&gt;  <span class="keyword">private</span>:</span><br><span class="line">&gt;   <span class="comment">// Conversion</span></span><br><span class="line">&gt;   <span class="keyword">uintptr_t</span> value() <span class="keyword">const</span> &#123; <span class="keyword">return</span> (<span class="keyword">uintptr_t</span>) <span class="keyword">this</span>; &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
