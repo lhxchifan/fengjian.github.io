@@ -65,7 +65,7 @@
 
 ## 删除(红黑树)
 
-> 1. 跟二叉搜索树一样, 找到这个节点, 先找到可以替换的子节点,即二叉搜索树的删除3,**所以最终替换的是只可能有一个或0个子节点的节点**
+> 1. 跟二叉搜索树一样, 找到这个节点, 先找到可以替换的子节点,即二叉搜索树的删除3,**如果固定选择找右子树的最左的儿子,所以最终替换的是只可能有一个右子节点或0个子节点的节点**
 >
 > 2. 替换节点的值跟当前要删除的节点的值替换,删除替换节点
 >
@@ -78,10 +78,49 @@
 >    > 1. 如果要删除的是黑色,被替换上来的节点为红色,把新的当前位置的节点涂黑,结束
 >    > 2. 如果被替换上来的节点也为黑色,即没有子节点,此时删除黑节点会违背性质5,具体见fixup
 
-## 删除fixup(P:删除节点的父节点,N:替换删除节点的子节点,D:删除节点,B:D的兄弟节点) 此时D一定为黑色,因为删除红色不需要fixup
+## 删除fixup(P:删除节点的父节点,DR:替换删除节点的子节点,D:删除节点,S:D的兄弟节点) 此时D一定为黑色,因为删除红色不需要fixup
 
-> 1. 如果D是黑色,N是红色,N替换D,把N涂黑,结束/反之亦然
-> 2. 如果N为null,B为红色,把P变为红色,B变为黑色,如果D是左子节点,左旋B,否则右旋B
-> 3. 如果P是黑色,B是黑色(这里黑色的原因,可能是执行2之后的),B的子节点全是黑色,把B涂红,递归fixup P
-> 4. 如果P是红色,B是黑色,B的子节点全是黑色,把B涂红,P涂黑
-> 5. 
+> 1. 如果D是红色,DR是黑色,DR替换D
+>
+>    ![brtree_remove_condition1](picture/brtree_remove_condition1.png)
+>
+> 2. 如果D是黑色,DR是红色,DR替换D, 把DR涂黑
+>
+>    ![brtree_remove_condition2](picture/brtree_remove_condition2.png)
+>
+> 3. 如果D为黑色,DR为黑色(NULL)
+>
+>    1. 如果S为红色,则P肯定为黑色(性质4),如果SL,SR,都是黑色,此时SL,SR都是double black(即本身不是null,且是黑色,且有且仅有一个子节点黑色),此时需要把P涂红,S涂黑,以S左旋/右旋,**此时没有结束,因为SL是double black, 左边路径的black少一个,后续过程参考3-3,3-4,3-5**
+>
+>       ![brtree_remove_condition3_1](picture/brtree_remove_condition3_1.png)
+>
+>    2. P, S, SL,SR均为黑色,此时SL, SR一定为null,此时把S涂红即可,**此时p这个路径看上去已经平衡了,但是经过p的黑色节点数其实少了一个,所以要递归调整P**
+>
+>       ![brtree_remove_condition_3_2](picture/brtree_remove_condition_3_2.png)
+>
+>    3. P是红色,S,SL,SR是黑色,左旋/右旋S,
+>
+>       ![brtree_remove_condition_3_3](picture/brtree_remove_condition_3_3.png)
+>
+>       如上图3-1,再经过3-3的规则转换后,变为下图
+>
+>       ![brtree_remove_condition_3_3_2](picture/brtree_remove_condition_3_3_2.png)
+>
+>    4. 如果P为黑色/红色,S为黑色,如果SL是红色,SR是黑色,且D是左儿子,此时需要把SL涂黑,S涂红,右旋S,如下图,**此时也没有结束, 需要继续走下去,在3-5继续变换**
+>
+>       ![brtree_remove_condition_3_4](picture/brtree_remove_condition_3_4.png)
+>
+>    5. 如果P是黑色/红色,S,SL是黑色黑色,SR是红色,此时把SR涂黑,左旋S,并交换S和P的颜色
+>
+>       ![brtree_remove_condition_3_5](picture/brtree_remove_condition_3_5.png)
+>
+> 4. 综上,讨论了以下几种情况
+>
+>    1. D和DR一红一黑
+>    2. D为黑色,DR为黑色(必为NULL,否则从D上的路径违背性质5),此时主要看兄弟节点的颜色,因为左边路径少了一个黑色
+>       1. S为红色,P一定为黑色,SL,SR都为double black(即本身不是null,且是黑色,且有且仅有一个子节点黑色)
+>       2. S为黑色,如果P为黑色,如果SL,SR都是黑色的NULL,涂红S,递归P(此时P的路径少一个黑色)
+>       3. S为黑色,P为红色,如果SL,SR都是黑色NULL,左旋S,
+>       4. S为黑色,P颜色不定,SL为红色,SR为黑色,右旋S,SL涂黑,S涂红,此时D那一路依然缺少黑色节点,左旋新的S,交换S和P的颜色
+>       5. S为黑色,P颜色不定,SL为黑色,SR为红色,SR涂黑,左旋S,交换S和P的颜色
+>       6. S为黑色,P颜色不定,SL,SR都为红色,参考5处理
